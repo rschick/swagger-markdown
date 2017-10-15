@@ -3,15 +3,13 @@ jobs:
   build_dev:
     docker:
       - image: circleci/node:6.11
-        environment:
-          NODE_ENV: development
     steps:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install dependencies
-          command: yarn
+          command: yarn install production=false
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
