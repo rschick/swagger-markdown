@@ -5,15 +5,15 @@ jobs:
       - image: circleci/node:6.11
     steps:
       - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+      # - restore_cache:
+      #     key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: Install deps
+          name: Install dependencies
           command: yarn
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - node_modules
+      # - save_cache:
+      #     key: dependency-cache-{{ checksum "package.json" }}
+      #     paths:
+      #       - node_modules
   test:
     docker:
       - image: circleci/node:6.11
